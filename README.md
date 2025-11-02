@@ -10,11 +10,12 @@ A comprehensive personal finance management application to track income, expense
 - **Goal Setting**: Track savings goals and progress
 - **Data Visualization**: Charts and graphs for financial insights
 
-## Tech Stack
-- **Backend**: Python/Flask or Node.js/Express
-- **Database**: SQLite/PostgreSQL
-- **Frontend**: React/Vue.js or HTML/CSS/JavaScript
-- **Charts**: Chart.js or D3.js
+## Tech Stack (MERN)
+- **MongoDB**: NoSQL database for data storage
+- **Express.js**: Backend web framework for Node.js
+- **React**: Frontend JavaScript library for UI
+- **Node.js**: JavaScript runtime for backend development
+- **Charts**: Chart.js for data visualization
 
 ## Project Structure
 ```
@@ -22,14 +23,18 @@ Personal_Finance_Tracker/
 ├── backend/
 │   ├── models/
 │   ├── routes/
-│   ├── utils/
-│   └── app.py
+│   ├── middleware/
+│   ├── config/
+│   ├── server.js
+│   └── package.json
 ├── frontend/
 │   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   └── App.js
 │   ├── public/
 │   └── package.json
-├── database/
-│   └── schema.sql
 └── README.md
 ```
 
@@ -55,14 +60,15 @@ Personal_Finance_Tracker/
 
 ## Getting Started
 1. Clone the repository
-2. Set up virtual environment
-3. Install dependencies
-4. Initialize database
-5. Run the application
+2. Install backend dependencies: `cd backend && npm install`
+3. Install frontend dependencies: `cd frontend && npm install`
+4. Set up MongoDB connection
+5. Run backend: `npm run dev`
+6. Run frontend: `npm start`
 
-## Database Schema
-- **Users**: id, username, email, password_hash
-- **Categories**: id, name, type (income/expense)
-- **Transactions**: id, user_id, category_id, amount, date, description
-- **Budgets**: id, user_id, category_id, amount, period
-- **Goals**: id, user_id, name, target_amount, current_amount, deadline
+## MongoDB Collections
+- **Users**: _id, username, email, password_hash, createdAt
+- **Categories**: _id, name, type (income/expense), userId, createdAt
+- **Transactions**: _id, userId, categoryId, amount, date, description, createdAt
+- **Budgets**: _id, userId, categoryId, amount, period, createdAt
+- **Goals**: _id, userId, name, targetAmount, currentAmount, deadline, createdAt
