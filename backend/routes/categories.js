@@ -1,6 +1,6 @@
-const express = require('express');
-const Category = require('../models/Category');
-const auth = require('../middleware/auth');
+import express from 'express';
+import Category from '../models/Category.js';
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -28,4 +28,4 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

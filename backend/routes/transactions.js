@@ -1,6 +1,6 @@
-const express = require('express');
-const Transaction = require('../models/Transaction');
-const auth = require('../middleware/auth');
+import express from 'express';
+import Transaction from '../models/Transaction.js';
+import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -40,4 +40,4 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;

@@ -1,7 +1,12 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import authRoutes from './routes/auth.js';
+import transactionRoutes from './routes/transactions.js';
+import categoryRoutes from './routes/categories.js';
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,9 +21,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/finance_t
   .catch(err => console.log(err));
 
 // Routes
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/transactions', require('./routes/transactions'));
-app.use('/api/categories', require('./routes/categories'));
+app.use('/api/auth', authRoutes);
+app.use('/api/transactions', transactionRoutes);
+app.use('/api/categories', categoryRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
